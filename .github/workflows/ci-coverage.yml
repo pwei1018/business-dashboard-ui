@@ -1,4 +1,4 @@
-name: Business Dash CI
+name: Business Dash CI Coverage
 
 on:
   workflow_run:
