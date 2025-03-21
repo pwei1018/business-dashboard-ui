@@ -9,6 +9,8 @@ export const getAlertIcon = function(alert: Partial<AlertI>): string {
   }
 
   switch (alert.severity?.toLowerCase()) {
+    case 'critical':
+      return 'i-mdi-alert-circle'
     case 'error':
       return 'i-mdi-alert-circle'
     case 'warning':
