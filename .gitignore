@@ -33,3 +33,7 @@ logs
 #Cypress screenshots
 cypress/screenshots
 cypress/downloads
+
+
+src/coverage
+coverage.xml
