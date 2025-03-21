@@ -13,7 +13,7 @@
     "lint:fix": "eslint --cache --ext '.ts,.vue' src --max-warnings 0 --fix",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "vitest --passWithNoTests --coverage && cp ./tests/coverage/clover.xml ./coverage.xml",
+    "test": "vitest --passWithNoTests --coverage.enabled true",
     "test:unit": "vitest",
     "test:e2e": "cypress open",
     "test:e2e:firefox": "cypress run firefox",
