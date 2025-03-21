@@ -35,5 +35,5 @@ cypress/screenshots
 cypress/downloads
 
 
-src/coverage
+**coverage**
 coverage.xml

@@ -4,6 +4,7 @@
   "type": "module",
   "version": "1.0.34",
   "scripts": {
+    "build-check": "nuxt build",
     "build": "nuxt generate",
     "build:local": "nuxt build",
     "dev": "nuxt dev --port=3000",
