@@ -1,0 +1,11 @@
+name: Business Dash CI
+
+on:
+  workflow_run:
+    workflows: ["Business Dash CI"]
+    types:
+      - completed
+
+jobs:
+  business-dashboard-ui:
+    uses: pwei1018/bcregistry-sre/.github/workflows/frontend-ci-coverage.yaml@main
