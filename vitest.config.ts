@@ -8,10 +8,7 @@ export default defineVitestConfig({
     coverage: {
       provider: 'v8',
       reportsDirectory: path.resolve(__dirname, 'tests/coverage'), // This ensures an absolute path,
-      reporter: ['text', 'clover', 'html'],
-      include: [
-        'src/**'
-      ]
+      reporter: ['text', 'clover', 'html']
     },
     environment: 'nuxt',
     environmentOptions: {
