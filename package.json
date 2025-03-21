@@ -4,6 +4,7 @@
   "type": "module",
   "version": "1.0.34",
   "scripts": {
+    "build-check": "nuxt build",
     "build": "nuxt generate",
     "build:local": "nuxt build",
     "dev": "nuxt dev --port=3000",
@@ -12,6 +13,7 @@
     "lint:fix": "eslint --cache --ext '.ts,.vue' src --max-warnings 0 --fix",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "test": "vitest --passWithNoTests --coverage.enabled true",
     "test:unit": "vitest",
     "test:e2e": "cypress open",
     "test:e2e:firefox": "cypress run firefox",
@@ -50,6 +52,7 @@
     "@nuxt/test-utils": "^3.13.1",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/tailwindcss": "^6.12.0",
+    "@vitest/coverage-v8": "1.6.0",
     "@vue/test-utils": "^2.4.6",
     "@zadigetvoltaire/nuxt-gtm": "^0.0.13",
     "cypress": "^13.10.0",

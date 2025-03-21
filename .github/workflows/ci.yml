@@ -2,124 +2,16 @@ name: Business Dash CI
 
 on:
   pull_request:
-    types: [assigned, synchronize]
+  workflow_dispatch:
 
 defaults:
   run:
     shell: bash
+    working-directory: .
 
 jobs:
-  setup-job:
-    runs-on: ubuntu-24.04
-
-    if: github.repository == 'bcgov/business-dashboard-ui'
-
-    steps:
-      - uses: actions/checkout@v4
-      - run: "true"
-
-  linting:
-    needs: setup-job
-    runs-on: ubuntu-24.04
-
-    strategy:
-      matrix:
-        node-version: [20]
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: true
-
-      - name: Linting
-        run: pnpm lint
-
-  unit-test:
-    needs: setup-job
-    runs-on: ubuntu-24.04
-
-    strategy:
-      matrix:
-        node-version: [20]
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: true
-
-      - name: Run unit tests
-        run: pnpm test:unit
-
-  cypress-test:
-    needs: setup-job
-    runs-on: ubuntu-24.04
-    env:
-      CYPRESS: true
-
-    strategy:
-      matrix:
-        node-version: [20]
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: true
-
-      - name: Set basic env
-        run: |
-          cp .env.example .env
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
-          build: pnpm build:local
-          start: pnpm preview
-
-  build-check:
-    needs: setup-job
-    runs-on: ubuntu-24.04
-
-    strategy:
-      matrix:
-        node-version: [20]
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: true
-
-      - name: Build check
-        run: pnpm build
+  business-dashboard-ui:
+    uses: pwei1018/bcregistry-sre/.github/workflows/frontend-ci.yaml@main
+    with:
+      app_name: "business-dashboard-ui"
+      working_directory: "."
