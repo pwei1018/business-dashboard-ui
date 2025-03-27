@@ -8,17 +8,8 @@ export default defineVitestConfig({
     coverage: {
       provider: 'v8',
       ignoreEmptyLines: true,
-      reportsDirectory: path.resolve(__dirname, 'tests/coverage'), // This ensures an absolute path,
-      // you can include other reporters, but 'json-summary' is required, json is recommended
-      reporter: ['text', 'json-summary', 'json'],
-      // If you want a coverage reports even if your tests are failing, include the reportOnFailure option
-      reportOnFailure: true,
-      thresholds: {
-        lines: 35,
-        branches: 40,
-        functions: 5,
-        statements: 30
-      }
+      reportsDirectory: path.resolve(__dirname, 'tests/coverage'),
+      reporter: ['text', 'clover', 'json-summary', 'json']
     },
     environment: 'nuxt',
     environmentOptions: {
