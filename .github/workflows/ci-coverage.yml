@@ -2,7 +2,7 @@ name: Business Dash CI Coverage
 
 on:
   workflow_run:
-    workflows: ["Business Dash CI"]
+    workflows: ["*CI*"]
     types:
       - completed
 

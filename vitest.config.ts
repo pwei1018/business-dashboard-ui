@@ -8,7 +8,8 @@ export default defineVitestConfig({
     coverage: {
       provider: 'v8',
       ignoreEmptyLines: true,
-      reportsDirectory: path.resolve(__dirname, 'tests/coverage')
+      reportsDirectory: path.resolve(__dirname, 'tests/coverage'),
+      reporter: ['text', 'clover', 'json-summary', 'json']
     },
     environment: 'nuxt',
     environmentOptions: {
